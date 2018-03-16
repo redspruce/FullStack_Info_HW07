@@ -1,0 +1,29 @@
+<!-- DELETE THIS PART FOR NUM. 2 -->
+{% extends "base.html" %}
+<!-- DELETE THIS PART FOR NUM. 2 -->
+
+{% block title %}
+	Login
+{% endblock %}
+
+<!-- DELETE THIS PART FOR NUM. 2 -->
+{% block content %}
+<!-- DELETE THIS PART FOR NUM. 2 -->
+	<div class="main-container">
+		<h3>Let's get you logged in</h3>
+		<form action="login" method='post'>
+		<!-- DELETE THIS PART FOR NUM. 2 -->
+			<label class="survey-item">Username
+			<input type="text" name="username"></label>
+			<label class="survey-item">Password
+			<input type="text" name="email">
+			</label>
+		<!-- DELETE THIS PART FOR NUM. 2 -->
+			<input class="action-button" id="login" type="submit" value="Login">
+		</form>
+		<a href="{{ url_for('signup') }}">Sign Up</a>
+	</div>
+
+<!-- DELETE THIS PART FOR NUM. 2 -->
+{% endblock %}
+<!-- DELETE THIS PART FOR NUM. 2 -->
