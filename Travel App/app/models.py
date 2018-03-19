@@ -6,13 +6,12 @@ def insert_users(username, password):
         cur.execute("INSERT INTO users (username, password) VALUES(?, ?)",(username, password))
         con.commit()
 
-# def insert_data(first_name, last_name, company, email, phone, street_address, city, state, country, zip_code):
-#     # SQL statement to insert into database goes here
-#     with sql.connect("app.db") as con:
-#     	cur = con.cursor()
-#     	cur.execute("INSERT INTO customers (first_name, last_name, company, email, phone) VALUES(?, ?, ?, ?, ?)",(first_name, last_name, company, email, phone))
-#     	cur.execute("INSERT INTO address (street_address, city, state, country, zip_code) VALUES(?, ?, ?, ?, ?)",(street_address, city, state, country, zip_code))
-#     	con.commit()
+def insert_data(triptitle, destination):
+    with sql.connect("app.db") as con:
+        cur = con.cursor()
+        cur.execute("INSERT INTO trips (triptitle, destination) VALUES(?, ?)",(triptitle, destination))
+        con.commit()
+
 
 def retrieve_trips():
     # SQL statement to query database goes here
@@ -54,3 +53,36 @@ def retrieve_trips():
 #         cur = con.cursor()
 #         cur.execute("INSERT INTO orders_customers (customer_id, order_id) VALUES (?,?)", (customer_id, order_id))
 #         con.commit()
+
+
+# def insert_data(first_name, last_name, company, email, phone, street_address, city, state, country, zip_code):
+#     # SQL statement to insert into database goes here
+#     with sql.connect("app.db") as con:
+#       cur = con.cursor()
+#       cur.execute("INSERT INTO customers (first_name, last_name, company, email, phone) VALUES(?, ?, ?, ?, ?)",(first_name, last_name, company, email, phone))
+#       cur.execute("INSERT INTO address (street_address, city, state, country, zip_code) VALUES(?, ?, ?, ?, ?)",(street_address, city, state, country, zip_code))
+#       con.commit()
+
+# def checkuser(username, password):
+#     with sql.connect("app.db") as con:
+#         cur = con.cursor()
+#         error = None
+#     try:
+#         cur.execute("SELECT COUNT(1) FROM users WHERE username = 'ass'")
+
+#         if not cur.fetchone()[0]:
+#             raise ServerError('Invalid username')
+
+#             cur.execute("SELECT password FROM users WHERE username = 'ass'")
+
+#             for row in cur.fetchall():
+#                 if password == row[0]:
+#                     session['username'] = request.form['username']
+#                     session['password'] = request.form['password']
+#                     return redirect(url_for('index'))
+
+#             raise ServerError('Invalid password')
+#     except ServerError as e:
+#         error = str(e)
+
+#     return render_template('login.html', error=error)

@@ -5,10 +5,10 @@ from wtforms.validators import DataRequired
 
 
 
-# class CreateTrip(Form):
-# 	triptitle
-# 	users = 
-# 	friends = SelectField(u'Friend', choices = myChoices, validators = [Required()])
+class CreateTrip(Form):
+	triptitle = StringField('triptitle', validators=[DataRequired()])
+	destination = StringField('destination', validators=[DataRequired()])
+	#friends = SelectField(u'Friend', choices = myChoices, validators = [Required()])
 
 
 # class CustomerForm(Form):

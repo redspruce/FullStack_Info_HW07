@@ -5,7 +5,7 @@
     <div class="row">
       <h1>Trip Home Page</h1>
       <div class= "section">
-        <a href="{{ url_for('create_customer') }}">Add a Trip</a>
+        <a href="{{ url_for('create_trip') }}">Add a Trip</a>
       </div>
       <div class="divider"></div>
       <div class="section">
@@ -15,8 +15,6 @@
             <tr>
               <th data-field="triptitle">Trip Title</th>
               <th data-field="destination">Destination</th>
-              
- 
 
             </tr>
           </thead>
@@ -24,7 +22,7 @@
             <tr>
               <td>{{ trip['triptitle'] }}</td>
               <td>{{ trip['destination'] }}</td>
-              <td><a href="{{ url_for('create_order', value=customer['customer_id']) }}">Remove Trip</a></td> 
+              <td><a href="/">Remove Trip</a></td> 
             </tr>
           {% endfor %}
         </table>

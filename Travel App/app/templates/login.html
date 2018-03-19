@@ -10,13 +10,14 @@
 {% block content %}
 <!-- DELETE THIS PART FOR NUM. 2 -->
 	<div class="main-container">
+		{{ error }}
 		<h3>Let's get you logged in</h3>
 		<form action="login" method='post'>
 		<!-- DELETE THIS PART FOR NUM. 2 -->
 			<label class="survey-item">Username
 			<input type="text" name="username"></label>
 			<label class="survey-item">Password
-			<input type="text" name="email">
+			<input type="text" name="password">
 			</label>
 		<!-- DELETE THIS PART FOR NUM. 2 -->
 			<input class="action-button" id="login" type="submit" value="Login">
