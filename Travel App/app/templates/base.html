@@ -1,16 +1,25 @@
 <html>
   <head>
     {% if title %}
-    <title>{{ title }} - ACME</title>
+    <title>{{ title }} - Trippin Hard</title>
     {% else %}
-    <title>Welcome to ACME Aircraft Parts</title>
+    <title>Trippin Hard</title>
     {% endif %}
+    {% block header %}
+    {% endblock %}
+
     <!-- Compiled and minified CSS -->
-<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="{{ url_for('static', filename="app.js") }}"></script> -->
+
+
+
   </head>
   <body>
     {% block content %}{% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <!-- <script type="text/javascript" src="{{ url_for('static', filename="app.js") }}"></script> -->
   </body>
 </html>

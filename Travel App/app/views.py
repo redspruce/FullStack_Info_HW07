@@ -52,7 +52,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    session.pop('email', None)
+    session.pop('password', None)
     return redirect(url_for('index'))
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -84,8 +84,10 @@ def create_trip():
         # Send data from form to Database
         triptitle = form.triptitle.data
         destination = form.destination.data
+        creator = session['username']
+        friend = form.friends.data
 
-        insert_data(triptitle, destination)
+        insert_data(triptitle, destination, creator, friend)
 
         return redirect(url_for('index'))
     return render_template('trips.html', form=form)
@@ -93,9 +95,12 @@ def create_trip():
 @app.route('/trips')
 def display_trips():
     # Retreive data from database to display
-    trips = retrieve_trips()
-    return render_template('home.html',
-                            trips=trips)
+    username = ''
+    if 'username' in session:
+        trips = retrieve_trips(session['username'])
+        return render_template('home.html', trips=trips)
+    else:
+        return render_template('login.html')
 
 
 # with sql.connect("app.db") as con:

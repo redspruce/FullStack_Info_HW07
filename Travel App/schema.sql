@@ -4,7 +4,9 @@ drop table if exists trips;
 create table trips (
 	trip_id integer primary key,
 	triptitle text not null,
-	destination text not null
+	destination text not null,
+	creator text not null,
+	friend text not null
 );
 
 drop table if exists users;
@@ -14,15 +16,15 @@ create table users (
 	password text not null
 );
 
-drop table if exists friends;
-create table friends (
-	id integer primary key,
-	trip_id text not null,
-	user_id text not null,
-	friend_id text not null,
-	FOREIGN KEY(trip_id) REFERENCES trips(trip_id),
-	FOREIGN KEY(user_id) REFERENCES users(user_id)
-);
+-- drop table if exists friends;
+-- create table friends (
+-- 	id integer primary key,
+-- 	trip_id text not null,
+-- 	user_id text not null,
+-- 	friend_id text not null,
+-- 	FOREIGN KEY(trip_id) REFERENCES trips(trip_id),
+-- 	FOREIGN KEY(user_id) REFERENCES users(user_id)
+-- );
 
 
 -- drop table if exists orders;

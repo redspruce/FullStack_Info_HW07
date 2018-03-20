@@ -6,14 +6,20 @@ def insert_users(username, password):
         cur.execute("INSERT INTO users (username, password) VALUES(?, ?)",(username, password))
         con.commit()
 
-def insert_data(triptitle, destination):
+def insert_data(triptitle, destination, creator, friend):
+    with sql.connect("app.db") as con:
+        cur = con.cursor()
+        cur.execute("INSERT INTO trips (triptitle, destination, creator, friend) VALUES(?, ?, ?, ?)",(triptitle, destination, creator, friend))
+        con.commit()
+
+def insert_friends(triptitle, destination):
     with sql.connect("app.db") as con:
         cur = con.cursor()
         cur.execute("INSERT INTO trips (triptitle, destination) VALUES(?, ?)",(triptitle, destination))
         con.commit()
 
 
-def retrieve_trips():
+def retrieve_trips(currentuser):
     # SQL statement to query database goes here
     with sql.connect("app.db") as con:
 
@@ -22,7 +28,8 @@ def retrieve_trips():
     	cur = con.cursor()
     	# get all the results and assign it to a variable
     	# no need to commit because you're just fetching data. not changing anything
-    	result = cur.execute("select * from trips"). fetchall()
+        # trips MATCH 'creator:'"+currentuser+"' AND friend:'"+currentuser+"''
+    	result = cur.execute("SELECT * FROM trips WHERE trips.creator == '"+currentuser+"' OR trips.friend == '"+currentuser+"'").fetchall()
     	print (result)
     return result
 
