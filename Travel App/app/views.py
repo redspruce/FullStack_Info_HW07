@@ -71,6 +71,13 @@ def signup():
 @app.route('/create_trip', methods=['GET', 'POST'])
 def create_trip():
     form = CreateTrip()
+
+    form.friends.choices = []        
+    
+    for row in fetch_friends(session['username']):
+        friend = str(row[0])
+        form.friends.choices += [(friend, friend)]
+
     # if form is validated when user presses submit
     if form.validate_on_submit():
         # Get data from the form
@@ -113,18 +120,9 @@ def display_trips():
 #     error = str(e)
 # return render_template('login.html', error=error)
 
-# @app.route('/add_order/<value>', methods=['GET', 'POST'])
-# def create_order(value):
-#     form = OrderForm()
-#     # if form is validated when user presses submit
-#     if form.validate_on_submit():
-#         # Get data from the form
-#         # Send data from form to Database
-#         name_of_part = form.name_of_part.data
-#         manufacturer_of_part = form.manufacturer_of_part.data
-
-#         order_id = insert_orders(name_of_part, manufacturer_of_part, value)
-#         insert_customers_orders(value, order_id)
-
-#         return redirect('/customers')
-#     return render_template('orders.html', form=form)
+@app.route('/remove_trip/<value>')
+def remove_trip(value):
+    with sql.connect("app.db") as con:
+        cur = con.cursor()
+        cur.execute("DELETE FROM trips WHERE trip_id = '"+value+"'")
+    return redirect(url_for('index'))

@@ -19,6 +19,7 @@ create table friends (
 	id integer primary key,
 	trip_id text not null,
 	user_id text not null,
+	friend_id text not null,
 	FOREIGN KEY(trip_id) REFERENCES trips(trip_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id)
 );

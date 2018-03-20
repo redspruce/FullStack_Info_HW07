@@ -26,6 +26,12 @@ def retrieve_trips():
     	print (result)
     return result
 
+def fetch_friends(currentuser):
+    with sql.connect("app.db") as con:
+        cur = con.cursor()
+        cur.execute("SELECT username FROM users WHERE username != '"+currentuser+"'")
+        return cur.fetchall()
+
 # def retrieve_orders():
 #     # SQL statement to query database goes here
 #     with sql.connect("app.db") as con:

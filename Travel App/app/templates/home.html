@@ -22,7 +22,7 @@
             <tr>
               <td>{{ trip['triptitle'] }}</td>
               <td>{{ trip['destination'] }}</td>
-              <td><a href="/">Remove Trip</a></td> 
+              <td><a href="/remove_trip/{{ trip['trip_id']}}">Remove Trip</a></td> 
             </tr>
           {% endfor %}
         </table>

@@ -1,5 +1,5 @@
 from flask.ext.wtf import Form
-from wtforms import StringField, IntegerField
+from wtforms import SelectField, StringField, IntegerField
 from flask_wtf.html5 import EmailField
 from wtforms.validators import DataRequired
 
@@ -8,6 +8,7 @@ from wtforms.validators import DataRequired
 class CreateTrip(Form):
 	triptitle = StringField('triptitle', validators=[DataRequired()])
 	destination = StringField('destination', validators=[DataRequired()])
+	friends = SelectField('friends', choices=[])
 	#friends = SelectField(u'Friend', choices = myChoices, validators = [Required()])
 
 
